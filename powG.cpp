@@ -1,10 +1,10 @@
-ll powG(ll int x,ll int y )
+ll powG(ll x,ll y )
 {
 
   if(y==1)return x;
   if(y==0)return 1;
 
-  ll int temp=powG(x,y/2);
+  ll temp=powG(x,y/2);
 
   temp = fun(temp,temp);
 
