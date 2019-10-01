@@ -1,5 +1,5 @@
-long long int powmod(long long int n,long long int p,long long int m){
-    long long int res=1;
+ll powmod(ll n,ll p,ll m){
+    ll res=1;
     n%=m;
     while(p){
         if(p&1)
