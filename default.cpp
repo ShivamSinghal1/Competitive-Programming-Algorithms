@@ -1,3 +1,19 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define             fi              first
+#define             sec             second
+#define             mod             1000000007
+#define             mod9            1000000009
+#define             ll              long long
+#define             pii             pair<int ,int>
+#define             pll             pair<ll,ll>
+#define             pb              push_back
+#define             rep(i,a,b)      for(i=a;i<b;i++)
+#define             mp              make_pair
+#define             t()             int t;cin>>t;while(t--)
+#define             vll             vector<ll>
+
+
 #define TRACE
 #ifdef TRACE
 #define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
