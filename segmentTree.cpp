@@ -1,55 +1,94 @@
-void build(int*a , int*tree , int s ,int e, int treeNode )
+
+///segment tree  for minimum element
+
+
+///Built function
+
+void built(int *a, int *tree,int s,int e,int index)
 {
-	if(s==e)
-	{
-		tree[treeNode]=a[s];
-		return ;
-	}
+	//Base case out of range
+	if(s>e)return;
+    //Base case leaf node
+    if(s==e)
+    {
+    	tree[index]=a[s];
+    	return;
+    }
 
-	int mid=(s+e)/2;
+     ///recurcive call
+    int mid=s+(e-s)/2
+    //left part
+    built(a,tree,s,mid,2*index);
+    //right part
+    built(a,tree,mid+1,e,(2*index)+1);
+   
+    //update according to question for finding minimum we use this
+    tree[index]=min(tree[2*index],tree[2*index +1]);
 
-	build(a,tree,s,mid,2*treeNode);
-	build(a,tree,mid+1,e,2*treeNode+1);
+     
 
-	//Change according to question
-	tree[treeNode]=tree[2*treeNode]+tree[2*treeNode+1];
 }
 
-void update(int*a,int*tree,int s,int e,int treeNode,int pos,int val)
+//query function return according to ques 
+int query(int *tree,int qs,int qe,int s,int e,int index)
 {
+	///no overlap  return acc to ques
+	if(qs>e||qe<s)return INT_MAX;
 
-	if(s==e)
-	{
-		a[pos]=val;
-		tree[treeNode]=val;
-		return ;
-	}
+	//complete overlap
+	if(qs<=s && e<=qe )
+       return tree[index];
 
-	int mid=(s+e)/2;
+   /// partial overlap
+   int mid=s+(e-s)/2;
+   query(tree,qs,qe,s,mid,2*index);
+   query(tree,qs,qe,mid+1,e,2*index+1);
+   //update acc to ques 
+   return min(tree[2*index],tree[2*index+1]);
+}
 
-	if(pos<=mid)
-		update(a,tree,s,mid,2*treeNode,pos,val);
+//update a single node 
+void update (int *tree,int s,int e,int index,int val,int node)
+{
+	//out of range
+	if(node>e||node<s)return;
 	
-	else
-		update(a,tree,mid+1,e,2*treeNode+1,pos,val);
+	//leaf node
+		if(s==e)
+		{
+			tree[index]=val;
+			return;
+		}
 
-	tree[treeNode]=tree[2*treeNode]+tree[2*treeNode+1];
+    //in range 
+		int mid=s+(e-s)/2;
+    update(tree,s,mid,2*index,val,node);		
+	update(tree,mid+1,e,2*index+1,val,node);
 
-
+	//update acc to ques 
+	tree[index]=min(tree[2*index],tree[2*index+1]);
+	return;
 }
-
-int query(int*a,int*tree,int s,int e,int treeNode,int l,int r)
+/// update with range increment all 
+void updaterange(int *tree,int s,int e,int index,int val,int rs,int re)
 {
-	if(s>r||e<l)
-		return 0;
-	if(s>=l&&e<=r)
+	  /// out of range 
+	if(rs>e||re<s)return;
+
+	/// leaf node
+	if( s==e)
 	{
-		return tree[treeNode];
+		tree[index]+=val;
+		return;
 	}
-
-	int mid=(s+e)/2;
-
-	
-	return (query(a,tree,s,mid,2*treeNode,l,r) + query(a,tree,mid+1,e,2*treeNode+1,l,r));
+	//in range
+	int mid=s+(e-s)/2;
+    updaterange(tree,s,mid,2*index,val,rs,re);    
+    updaterange(tree,mid+1,e,2*index+1,val,rs,re);
+    tree[index]=min(tree[2*index],tree[2*index+1]);
+    return;
 
 }
+
+
+
