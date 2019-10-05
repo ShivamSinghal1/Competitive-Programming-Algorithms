@@ -69,26 +69,48 @@ void update (int *tree,int s,int e,int index,int val,int node)
 	tree[index]=min(tree[2*index],tree[2*index+1]);
 	return;
 }
-/// update with range increment all 
-void updaterange(int *tree,int s,int e,int index,int val,int rs,int re)
+
+
+/// update with range increment all  with lazy propagation//
+//we take another array of same length as that of tree
+void updatelazy(int *tree,int *lazy,int s,int e,int index,int val,int rs,int re)
 {
 	  /// out of range 
+	if(s>e)return;
+
+	/// check for previous updates
+	if(lazy[index]!=0)
+	{
+		tree[index]+=lazy[index];
+		if(s!=e)//we are not on leaf node
+		{
+			lazy[2*index]+=lazy[index];
+			lazy[2*index+1]+=lazy[index];
+		}
+		lazy[index]=0;
+	}
+
+	///if our tree node is up to date
+	//then 3 conditions
+	//no overlap with range
 	if(rs>e||re<s)return;
 
-	/// leaf node
-	if( s==e)
+	//complete overlap
+	if(rs<=s&&re>=e)
 	{
 		tree[index]+=val;
+		if(s!=e)//not leaf node
+		{
+           lazy[2*index]+=val;          
+           lazy[2*index+1]+=val;
+		}
 		return;
 	}
-	//in range
+
+	//partial overlap
 	int mid=s+(e-s)/2;
-    updaterange(tree,s,mid,2*index,val,rs,re);    
-    updaterange(tree,mid+1,e,2*index+1,val,rs,re);
+    updatelazy(tree,lazy,s,mid,2*index,val,rs,re);
+    updatelazy(tree,lazy,mid+1,e,2*index+1,val,rs,re);
     tree[index]=min(tree[2*index],tree[2*index+1]);
-    return;
 
 }
-
-
-
