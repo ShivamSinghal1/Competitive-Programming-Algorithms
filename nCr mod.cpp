@@ -32,19 +32,26 @@ ll modInverse(ll a,ll m)
 	}
 }
 
+const int MAX = 1 << 20;
+ll fact[MAX];
+ll ifact[MAX];
+void preCalcFac(){
+    fact[0] = 1;
+    for(int i = 1; i < MAX; ++i)
+        fact[i] = fact[i - 1] * i % mod;
+
+    ifact[MAX - 1] = powMod(fact[MAX - 1], mod - 2, mod);
+    for(int i = MAX-2; i >= 0 ; ++i)
+    {
+        ifact[i] = ifact[i + 1] * (i + 1) % mod;
+    } 
+}
+
 
 ll nCr(ll n,ll r) 
 { 
    // Base case 
    if (r==0) 
       return 1; 
-  
-    // Fill factorial array so that we can find all factorial of r, n and n-r 
-    ll fac[n+1]; 
-    fac[0] = 1; 
-    for (ll i=1 ; i<=n; i++){ 
-        fac[i] = fac[i-1]*(i%mod);
-        fac[i] %= mod;
-    }
     return (fac[n]*modInverse(fac[r],mod)%mod * modInverse(fac[n-r],mod))%mod; 
 } 
