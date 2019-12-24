@@ -1,4 +1,4 @@
-# ICPCAlgo
+# ICPC ALGORITHM
 ## Mathematics_Algo 
   1) calculate_Factor :- To Calculate Factor of any number n, returns set loaded with all factors of n.
   2) gcd_Extended :- To calculate gcd with Extended Euclidean ax+by=gcd(a,b).
