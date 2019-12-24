@@ -1,8 +1,8 @@
-set<int> calculateFactor(int n) 
+set<ll> calculateFactor(ll n) 
 { 
     // Note that this loop runs till square root 
-  set<int> temp;
-  int l = sqrt(n);
+  set<ll> temp;
+  ll l = sqrt(n);
     for (int i=1; i<=l; i++) 
     { 
         if (n%i == 0) 
