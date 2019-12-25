@@ -14,6 +14,8 @@ class graph
 
         void dfs(int );
 
+        void bfs(int );
+
 };
 
 void graph::take_input(bool isDir)
@@ -21,7 +23,7 @@ void graph::take_input(bool isDir)
     cin>>n_v>>n_e;
     adj_list.resize(n_v);
     isVisited.resize(n_v);
-    fill(all(isVisited),0);
+    fill(all(isVisited),-1);
     isDirected = isDir;
     int to,fro;
     for(int i=0;i<n_e;++i)
