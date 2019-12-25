@@ -1,5 +1,6 @@
 void graph::bfs(int source)
 {
+    fill(all(isVisited),-1);
     queue<int> q;
     q.push(source);
     isVisited[source] = 0;
