@@ -5,6 +5,8 @@ class graph
         vector<vector<int>> adj_list;
         bool isDirected;
         vector<int> isVisited;
+        vector<int> indeg; //Stores indegree of all Nodes
+        vector<int> topo; //Stores lexicographically smallest toposort
 
         void take_input(bool =true);
 
@@ -15,6 +17,8 @@ class graph
         void dfs(int );
 
         void bfs(int );
+
+        bool toposort();
 
 };
 
