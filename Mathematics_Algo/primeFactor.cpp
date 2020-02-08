@@ -1,7 +1,8 @@
-vector<ll> sieve(ll n,ll int*a)
+
+vector<ll> sieve(ll n,ll *a)
 {
-    vector<ll int>v;
-    fill(a,a+n,0);
+    vector<ll>v;
+    fill(a,a+n+1,0);
     ll i;
     rep(i,2,n+1)
     {
@@ -20,21 +21,28 @@ vector<ll> sieve(ll n,ll int*a)
     return v;
 }
 
-vector<ll> primeFactor(ll n,ll int*a){
+vector<ll> primeFactor(ll n,vi v){
     vector<ll> pFactor;
-    while(a[n]!=1){
-        pFactor.push_back(a[n]);
-        n /= a[n];
+    for(auto prime:v)
+    {
+        if(n%prime == 0)
+        {
+            while(n%prime==0)
+            {
+                n/=prime;
+            }
+            pFactor.pb(prime);
+        }
     }
-    pFactor.push_back(n);
+    if(n!=1){
+        pFactor.push_back(n);
+    }
     return pFactor;
 }
 
-/* How to Use
-ll int* arr = new ll int[100];
-  vector<ll int> v = sieve(100,arr);
-  vector<ll int> p = primeFactor(65,arr);
-  for(auto i:p){
-    cout<<i<<" ";
-  }
- */ 
+/*How to USE
+    int MAX = 100000;
+    int* arr = new int[MAX+1];
+    vi v = sieve(MAX,arr);
+    vi p = primeFactor(n,v);  n = prime factor to be calculated
+*/
