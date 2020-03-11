@@ -1,4 +1,4 @@
-ll gcdExtended(ll a,ll b,ll &x,ll &y)
+int gcdExtended(int a,int b,int &x,int &y)
 {
 	// Base Case
 	if (a == 0)
@@ -7,8 +7,8 @@ ll gcdExtended(ll a,ll b,ll &x,ll &y)
 		return b;
 	}
 
-	ll x1, y1; // To store results of recursive call
-	ll gcd = gcdExtended(b%a, a, x1, y1);
+	int x1, y1; // To store results of recursive call
+	int gcd = gcdExtended(b%a, a, x1, y1);
 
 	// Update x and y using results of recursive
 	// call
@@ -18,31 +18,31 @@ ll gcdExtended(ll a,ll b,ll &x,ll &y)
 	return gcd;
 }
 
-ll modInverse(ll a,ll m)
+int modInverse(int a,int m)
 {
-	ll x, y;
-	ll g = gcdExtended(a, m, x, y);
+	int x, y;
+	int g = gcdExtended(a, m, x, y);
 	if (g != 1)
 		cout << "Inverse doesn't exist";
 	else
 	{
 		// m is added to handle negative x
-		ll res = (x%m + m) % m;
+		int res = (x%m + m) % m;
         return res;
 	}
 }
 
 
-ll nCr(ll n,ll r) 
+int nCr(int n,int r) 
 { 
    // Base case 
    if (r==0) 
       return 1; 
   
     // Fill factorial array so that we can find all factorial of r, n and n-r 
-    ll fac[n+1]; 
+    int fac[n+1]; 
     fac[0] = 1; 
-    for (ll i=1 ; i<=n; i++){ 
+    for (int i=1 ; i<=n; i++){ 
         fac[i] = fac[i-1]*(i%mod);
         fac[i] %= mod;
     }
