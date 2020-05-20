@@ -1,64 +1,105 @@
-vector<int> a,tree;
-int type(int temp1, int temp2)
+template <typename T>
+struct segmentTree
 {
-    // Change this type according to the question
-    // Example - max , min, sum 
-    return temp1 + temp2;
-}
-void build(int s =0,int e = a.size()-1, int treeNode = 1)
-{
-    if(s==e)
+    int n;
+    vector<T> a,tree;
+    vector<bool> cLazy;
+    vector<int> lazy;
+    segmentTree(int n)
     {
-        tree[treeNode]=a[s];
-        return;
+        this->n = n;
+        a.resize(n);
+        tree.resize(4*n + 5);
+        cLazy.assign(4*n + 5, false);
+        lazy.assign(4*n + 5, 0);
     }
-    int mid=(s+e)/2;
-    build(s,mid,2*treeNode);
-    build(mid+1,e,2*treeNode+1);
-    tree[treeNode] = type(tree[2*treeNode] , tree[2*treeNode + 1]);
-}
-void update(int pos, int val ,int s = 0,int e = a.size()-1,int treeNode = 1)
-{
-    if(s==e)
+    void propagate(int node, int s, int e)
     {
-        a[pos]=val;
-        tree[treeNode]=val;
-        return ;
+        if(s != e)
+        {
+            cLazy[node*2] = 1;
+            cLazy[node*2 + 1] = 1;
+            lazy[node*2] = lazy[node];
+            lazy[node*2 + 1] = lazy[node]; 
+        }
+        tree[node] = (e - s + 1) * lazy[node];
+        cLazy[node] = 0;
     }
-    int mid=(s+e)/2;
-    if(pos<=mid)
-        update(pos, val, s, mid, 2*treeNode);
-    else
-        update(pos, val, mid+1, e, 2*treeNode+1);
-    tree[treeNode] = type(tree[2*treeNode] , tree[2*treeNode + 1]);
-}
-int query(int l, int r, int s=0, int e=a.size()-1, int treeNode = 1)
-{
-    if(s>r||e<l)
-        return 0;
-    if(s>=l&&e<=r)
-        return tree[treeNode];
-    int mid=(s+e)/2;
-    int left_result = query(l, r, s, mid, 2*treeNode) ;
-    int right_result = + query(l, r, mid+1, e, 2*treeNode+1);
-    return  type(left_result ,right_result);
-}
-/* HOW TO USE 
-    int n = 3;
-
-    a.resize(n);
-    tree.resize(4*n+5);
-
-    for(int i=0;i<n;++i)
+    T combine(T i1, T i2)
     {
-        a[i] = i;
+        // Change this combine function
+        // according to the question
+        // Example - max , min, sum 
+        // If T change this will change
+        return i1 + i2;
+    }
+    void build(int s,int e,int node)
+    {
+        if(s==e)
+            tree[node]=a[s];
+        else
+        {
+            int mid=(s+e)/2;
+            build(s,mid,2*node);
+            build(mid+1,e,2*node+1);
+            tree[node] = combine(tree[2*node] , tree[2*node + 1]);
+        }
+    }
+    void update(int l, int r, int val ,int s ,int e ,int node)
+    {
+        if(cLazy[node])
+            propagate(node, s, e);
+        if(r<s || l>e)
+            return;
+        if(l<=s && e<=r)
+        {
+            cLazy[node] = 1;
+            lazy[node] = val;
+            propagate(node, s, e);
+            return;
+        }
+        int mid = (s + e)/2;
+        update(l,r,val, s , mid, node*2);
+        update(l,r,val, mid+1,e ,node*2 + 1);
+        tree[node] = combine(tree[2*node] , tree[2*node + 1]);
+    }
+    T query(int l, int r, int s, int e, int node)
+    {
+        if(cLazy[node])
+            propagate(node, s, e);
+        if(s>r||e<l)
+            // If T change this will change
+            return 0;
+        if(s>=l&&e<=r)
+            return tree[node];
+        int mid=(s+e)/2;
+        T left_result = query(l, r, s, mid, 2*node) ;
+        T right_result = query(l, r, mid+1, e, 2*node+1);
+        return  combine(left_result ,right_result);
     }
 
-    build();
-
-    cout << query(0,1); //Output 1
-
-    update(0,2);
-
-    cout << query(0,1); //Output 3
+    void build()
+    {
+        build(0,n-1,1);
+    }
+    void update(int pos,int val)
+    {
+        update(pos,pos, val , 0 , n-1,1);
+    }
+    void update(int l,int r,int val)
+    {
+        update(l,r, val , 0 , n-1,1);
+    }
+    T query(int l,int r)
+    {
+        return query(l,r,0,n-1,1);
+    }
+};
+/* USE - 
+segmentTree<int> seg(n) // n is the size of array 
+seg.a = v // Array
+seg.build() // Build the tree
+seg.update(l,r,val) // a[l] = a[l+1] = ... = a[r] = val
+seg.update(pos,val) // do a[pos] = val
+seg.query(l,r) // get sum
 */
