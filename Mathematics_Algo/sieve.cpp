@@ -1,21 +1,26 @@
-vector<ll> sieve(ll n,ll int*a)
+const int mx = 1e6 + 1;
+int prime[mx];
+
+vector<int> sieve()
 {
-    vector<ll int>v;
-    fill(a,a+n,0);
-    ll i;
-    rep(i,2,n+1)
+    vector<int>v;
+    int i;
+    for(i=2 ; i < mx ; ++i)
     {
-        if(a[i]>0)
+        if(prime[i]>0)
             continue;
-        a[i] = 1;
-        ll j=i*i;
-        while(j<=n)
+        prime[i] = 1;
+        int j=i*i;
+        while(j< mx)
         {
-            if(a[j]==0)
-                a[j]=i;
+            if(prime[j]==0)
+                prime[j]=i;
             j+=i;
         }
         v.pb(i); 
     }
+    // Return a vector consisting of all prime numbers
     return v;
+    // prime[i] represents the smallest prime number which divides 
+    // the number i
 }
