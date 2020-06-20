@@ -1,15 +1,2 @@
-ll powG(ll x,ll y )
-{
-
-  if(y==1)return x;
-  if(y==0)return 1;
-
-  ll temp=powG(x,y/2);
-
-  temp = fun(temp,temp);
-
-  if(y&1)
-    temp=fun(temp,x);
-  
-return temp;
-}
+int pw(int b, int p) { int r = 1; while (p > 0) { if (p & 1) r = r * b; 
+        p = p >> 1; b = b * b; } return r; }
