@@ -1,5 +1,5 @@
-ll powMod(ll n,ll p,ll m){
-    ll res=1;
+int powm(int n,int p,int m = i(mod)){
+    int res=1;
     n%=m;
     while(p){
         if(p&1)
