@@ -1,34 +1,23 @@
-ll gcdExtended(ll a,ll b,ll &x,ll &y)
+int gcd(int a,int b,int &x,int &y)
 {
-	// Base Case
-	if (a == 0)
-	{
-		x = 0, y = 1;
-		return b;
-	}
-
-	ll x1, y1; // To store results of recursive call
-	ll gcd = gcdExtended(b%a, a, x1, y1);
-
-	// Update x and y using results of recursive
-	// call
-	x = y1 - (b/a) * x1;
-	y = x1;
-
-	return gcd;
+    if (b == 0) {
+        x = 1;
+        y = 0;
+        return a;
+    }
+    int x1, y1;
+    int d = gcd(b, a % b, x1, y1);
+    x = y1;
+    y = x1 - y1 * (a / b);
+    return d;
 }
 
-ll modInverse(ll a,ll m)
+int modInverse(int a,int m)
 {
-	ll x, y;
-	ll g = gcdExtended(a, m, x, y);
-	if (g != 1)
-		cout << "Inverse doesn't exist";
-	else
-	{
-		// m is added to handle negative x
-		ll res = (x%m + m) % m;
-        	return res;
-	}
+    int x, y;
+    int g = gcd(a, m, x, y);
+    if (g != 1)
+        return -1;
+    else
+        return (x%m + m) % m;
 }
-
