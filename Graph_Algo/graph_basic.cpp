@@ -8,11 +8,20 @@ class graph
         vector<int> indeg; //Stores indegree of all Nodes
         vector<int> topo; //Stores lexicographically smallest toposort
 
-        void take_input(bool =true);
+        graph(int n)
+        {
+            n_v = n;
+            adj_list.resize(n);
+            isVisited.resize(n);
+        }
+
+        graph(){}
+
+        void take_input(bool = false);
 
         void show_adj_list();
 
-        void addEdge(int ,int ,bool =true);
+        void addEdge(int ,int ,bool =false);
 
         void dfs(int );
 
@@ -40,24 +49,22 @@ void graph::take_input(bool isDir)
 void graph::show_adj_list()
 {
     int i;
-    cout<<"No. of Vertices = "<<n_v<<en;
-    cout<<"No. of Edges = "<<n_e<<en;
+    cout<<"No. of Vertices = "<<n_v<<endl;
+    cout<<"No. of Edges = "<<n_e<<endl;
     rep(i,0,n_v)
     {
         int j;
         cout<<i<<"-> ";
         rep(j,0,adj_list[i].size())
-        {
             cout<<adj_list[i][j]<<" ";
-        }
-        cout<<en;
+        cout<<endl;
     }
 }
 
 void graph::addEdge(int to,int fro,bool isDir)
 {
     adj_list[to].push_back(fro);
-    if(isDir)
+    if(!isDir)
         adj_list[fro].push_back(to);
 }
 
