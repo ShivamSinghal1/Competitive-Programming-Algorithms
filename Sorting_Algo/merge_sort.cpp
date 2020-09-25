@@ -26,7 +26,7 @@ std::vector<T> merge_sort(const std::vector<T>& to_sort, Compare cmp) {
     groups.reserve(to_sort.size());
     std::transform(
         begin(to_sort), end(to_sort), std::back_inserter(groups),
-        [](const auto& el) { return std::vector<T>{ {el} }; }
+        [](const T& el) { return std::vector<T>{ {el} }; }
     );
 
     while (groups.size() > 1) {
@@ -45,6 +45,7 @@ std::vector<T> merge_sort(const std::vector<T>& to_sort, Compare cmp) {
     return groups[0];
 }
 
+
 // Demo
 // #include <iostream>
 // 
@@ -56,4 +57,3 @@ std::vector<T> merge_sort(const std::vector<T>& to_sort, Compare cmp) {
 //     }
 //     std::cout << '\n';
 // }
-
