@@ -2,6 +2,14 @@
 The purpose of this repository is to get all the Algorithms required for Competitive Programming at one place. This will be very helpful.
 
 #### If you wish to contribute, please refer to [the contributor guidelines](https://github.com/ShivamSinghal1/Competitive-Programming-Algorithms/blob/master/CONTRIBUTING.md).
+- Add a Competitive Programming Algorithm other than the mentioned in the repository. 
+- Please do not copy from the internet and then paste it here. Try to implement on your own. 
+- Try to generalize the Algorithm.
+- The purpose is to learn something from this. 
+- If you implement some algorithm from this repository and found some issue , Raise issue and it will be solved ASAP.
+
+#### If you want to Practice then visit (https://codedigger.tech) and practice topicwise competitive problems from competitive sites Codeforces , SPOJ , Codechef and UVa.
+
 ## Mathematics_Algo 
   1) calculate_Factor :- To Calculate Factor of any number n, returns set loaded with all factors of n.
   2) gcd_Extended :- To calculate gcd with Extended Euclidean ax+by=gcd(a,b).
