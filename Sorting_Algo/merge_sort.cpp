@@ -1,5 +1,8 @@
+// Merge Sort Algorithm
 // Author: David Kanekanian
-// This algorithm requires at least C++14.
+// This implementation requires at least C++11 due to lambda.
+// But the demo requires at least C++17 due to template deductions.
+
 
 #include <algorithm>  // std::transform
 #include <iterator>  // std::back_inserter
@@ -45,15 +48,16 @@ std::vector<T> merge_sort(const std::vector<T>& to_sort, Compare cmp) {
     return groups[0];
 }
 
-
 // Demo
+// Demo requires at least C++17
 // #include <iostream>
-// 
+//
 // int main() {
-//     std::vector<int> v{5, 3, 6, 2, 7};
+//     std::vector v{5, 3, 6, 2, 7};
 //     auto v1 = merge_sort(v, [](auto a, auto b){ return a < b; });
 //     for (const auto& el : v1) {
 //         std::cout << el << " ";
 //     }
 //     std::cout << '\n';
+// .   // Output: 2 3 5 6 7
 // }
