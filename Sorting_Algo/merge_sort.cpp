@@ -1,10 +1,9 @@
 // Author: David Kanekanian
 // This algorithm requires at least C++14.
 
-#include <algorithm>
-#include <iterator>
-#include <vector>
-#include <iostream>
+#include <algorithm>  // std::transform
+#include <iterator>  // std::back_inserter
+#include <vector>  // std::vector
 
 
 template<class T, class Compare>
@@ -46,12 +45,15 @@ std::vector<T> merge_sort(const std::vector<T>& to_sort, Compare cmp) {
     return groups[0];
 }
 
-int main() {
-    std::vector<int> v{5, 3, 6, 2, 7};
-    auto v1 = merge_sort(v, [](auto a, auto b){ return a < b; });
-    for (const auto& el : v1) {
-        std::cout << el << " ";
-    }
-    std::cout << '\n';
-}
+// Demo
+// #include <iostream>
+// 
+// int main() {
+//     std::vector<int> v{5, 3, 6, 2, 7};
+//     auto v1 = merge_sort(v, [](auto a, auto b){ return a < b; });
+//     for (const auto& el : v1) {
+//         std::cout << el << " ";
+//     }
+//     std::cout << '\n';
+// }
 
