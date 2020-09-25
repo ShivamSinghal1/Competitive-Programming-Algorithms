@@ -1,7 +1,7 @@
 # COMPETITIVE PROGRAMMING ALGORITHMS
 The purpose of this repository is to get all the Algorithms required for Competitive Programming at one place. This will be very helpful.
 
-#### If you wish to contribute, please refer to [the contributor guidelines](https://github.com/matthewsamuel95/ACM-ICPC-Algorithms/blob/master/CONTRIBUTING.md).
+#### If you wish to contribute, please refer to [the contributor guidelines](https://github.com/ShivamSinghal1/Competitive-Programming-Algorithms/blob/master/CONTRIBUTING.md).
 ## Mathematics_Algo 
   1) calculate_Factor :- To Calculate Factor of any number n, returns set loaded with all factors of n.
   2) gcd_Extended :- To calculate gcd with Extended Euclidean ax+by=gcd(a,b).
