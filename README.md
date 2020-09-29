@@ -24,7 +24,7 @@ The purpose of this repository is to get all the Algorithms required for Competi
   11) seive :- Return vector with loaded prime numbers. Fill array with smallest prime factor that divides that number. Example:- for a[1] = 0, a[2] or for prime number = 1, for composite a[6] = 2.
   12) sum of GP :- Calculate sum of Geometric Progression of series (1 + r + r^2 +....+ r^(n-2) ) % m.
   13) totient :- Total numbers from 1 to N whose gcd with N is 1.
-
+  14) Binary Exponentiation. O(log n)
 ## String_Algo
   1) isVowel :- Check whether a character is vowel or not.
   
