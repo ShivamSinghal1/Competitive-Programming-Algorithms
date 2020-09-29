@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>  
+using namespace std;
+//========================
+
+long long recursive_bipower(long long a , long long b){
+	if( b == 0 )
+		return 1;
+	long long res = recursive_bipower(a ,b/2);
+	long long ans = res*res;
+	if( b%2 == 1) 
+		ans *=a;
+	return ans;
+
+}
+
+long long iterative_bipower(long long a  , long long b){
+	int ans  = 1;
+	while( b >0){
+		if(b%2==1) ans *=a;
+		a*=a;
+		b/=2; 
+	}
+	return ans;
+}
+
+//========================
+int main(){
+
+//===========MAIN STARTS=================
+long long a , b ;
+cin>>a>>b;
+cout<<"Binary Exponential using recursion : "<<recursive_bipower(a,b)<<endl;
+cout<<"Binary Exponential in an iterative way: "<<iterative_bipower(a,b);
+
+
+//===========MAIN ENDS=================
+	return 0;	
+
+
+}
+
