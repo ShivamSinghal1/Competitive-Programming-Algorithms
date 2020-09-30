@@ -30,3 +30,7 @@ The purpose of this repository is to get all the Algorithms required for Competi
 ## String_Algo
   1) isVowel :- Check whether a character is vowel or not.
   
+## Array
+1)Spiral search in 2d array
+
+  
