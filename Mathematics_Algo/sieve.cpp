@@ -1,16 +1,16 @@
-const int mx = 1e6 + 1;
-int prime[mx];
+const long long mx = 1e6 + 1;
+long long prime[mx];
 
-vector<int> sieve()
+vector<long long> sieve()
 {
-    vector<int>v;
-    int i;
+    vector<long long>v;
+    long long i;
     for(i=2 ; i < mx ; ++i)
     {
         if(prime[i]>0)
             continue;
         prime[i] = 1;
-        int j=i*i;
+        long long j=i*i;
         while(j< mx)
         {
             if(prime[j]==0)

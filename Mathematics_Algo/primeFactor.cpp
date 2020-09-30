@@ -1,15 +1,14 @@
-
-vector<ll> sieve(ll n,ll *a)
+vector<long long> sieve(long long n,long long *a)
 {
-    vector<ll>v;
+    vector<long long>v;
     fill(a,a+n+1,0);
-    ll i;
+    long long i;
     rep(i,2,n+1)
     {
         if(a[i]>0)
             continue;
         a[i] = 1;
-        ll j=i*i;
+        long long j=i*i;
         while(j<=n)
         {
             if(a[j]==0)
@@ -21,8 +20,8 @@ vector<ll> sieve(ll n,ll *a)
     return v;
 }
 
-vector<ll> primeFactor(ll n,vi v){
-    vector<ll> pFactor;
+vector<long long> primeFactor(long long n,vi v){
+    vector<long long> pFactor;
     for(auto prime:v)
     {
         if(n%prime == 0)

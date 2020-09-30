@@ -1,4 +1,4 @@
-ll gcdExtended(ll a,ll b,ll &x,ll &y)
+long long gcdExtended(long long a,long long b,long long &x,long long &y)
 {
 	// Base Case
 	if (a == 0)
@@ -7,8 +7,8 @@ ll gcdExtended(ll a,ll b,ll &x,ll &y)
 		return b;
 	}
 
-	ll x1, y1; // To store results of recursive call
-	ll gcd = gcdExtended(b%a, a, x1, y1);
+	long long x1, y1; // To store results of recursive call
+	long long gcd = gcdExtended(b%a, a, x1, y1);
 
 	// Update x and y using results of recursive
 	// call
