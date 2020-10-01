@@ -1,0 +1,74 @@
+//ROTATE MATRIX BY 90
+#include<bits/stdc++.h>
+using namespace std;
+#define N 105
+
+/*input:
+1
+4
+1 2 3 4
+5 6 7 8
+9 10 11 12
+13 14 15 16
+output:
+4 8 12 16 
+3 7 11 15 
+2 6 10 14 
+1 5 9 13 
+*/
+
+void rotateby90(int n, int a[][N]){
+    
+   int i,j;
+ for(i=0;i<n;i++)
+    {
+    	for(j=i+1;j<n;j++)
+    	{
+       swap(a[i][j],a[j][i]);
+    	}
+    }	
+	for(i=0;i<n;i++)
+	{
+		int low=0,high=n-1;
+		while(low<high)
+		{
+			swap(a[low][i],a[high][i]);
+			low++;
+			high--;
+		}
+	}
+
+}
+
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		int n;
+		cin>>n; 
+		int a[N][N],i,j;
+		for(i=0;i<n;i++)
+		{
+			for(j=0;j<n;j++)
+			{
+				cin>>a[i][j]; 
+			}
+		}
+		
+		rotateby90(n, a);
+		
+		for(i=0;i<n;i++)
+		{
+			for(j=0;j<n;j++)
+			{
+				cout<<a[i][j]<<" "; 
+			}
+			cout<<endl;
+		}
+		cout<<endl;
+	    
+	}
+	return 0;
+} 
