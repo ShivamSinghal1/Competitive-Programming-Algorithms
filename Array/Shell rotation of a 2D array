@@ -1,0 +1,117 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void reverse(int a[], int start, int end)
+{
+    while (start < end)
+    {
+        int temp;
+        temp = a[start];
+        a[start] = a[end];
+        a[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+void rotate(int a[], int size, int k)
+{
+    k = k % size;
+    if (k < 0)
+    {
+        k = k + size;
+    }
+
+    reverse(a, 0, size - 1 - k);
+    reverse(a, size - k, size - 1);
+    reverse(a, 0, size - 1);
+}
+
+int main()
+{
+    int n, m;
+    cin >> n >> m;
+    int arr[n][m];
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cin >> arr[i][j];
+        }
+    }
+    int s, k;
+    cin >> s >> k;
+    int minr = s - 1, minc = s - 1, maxr = n - s, maxc = m - s;
+    int minr1 = minr, minc1 = minc, maxr1 = maxr, maxc1 = maxc;
+    int size = 2 * (maxr - minr + maxc - minc);
+    int a[size];
+    int z = 0;
+    for (int i = minr, j = minc; i <= maxr; i++)
+    {
+        
+        a[z] = arr[i][j];
+        z++;
+    }
+    minc++;
+    for (int i = maxr, j = minc; j <= maxc; j++)
+    {
+       
+        a[z] = arr[i][j];
+        z++;
+    }
+    maxr--;
+    for (int i = maxr, j = maxc; i >= minr; i--)
+    {
+       
+        a[z] = arr[i][j];
+        z++;
+    }
+    maxc--;
+    for (int i = minr, j = maxc; j >= minc; j--)
+    {
+        
+        a[z] = arr[i][j];
+        z++;
+    }
+
+    rotate(a, size, k);
+
+    //storing data
+    z=0;
+    for (int i = minr1, j = minc1; i <= maxr1; i++)
+    {
+       
+        arr[i][j]=a[z] ;
+        z++;
+    }
+    minc1++;
+    for (int i = maxr1, j = minc1; j <= maxc1; j++)
+    {
+       
+         arr[i][j]=a[z] ;
+         z++;
+    }
+    maxr1--;
+    for (int i = maxr1, j = maxc1; i >= minr1; i--)
+    {
+     
+         arr[i][j]=a[z] ;
+         z++;
+    }
+    maxc1--;
+    for (int i = minr1, j = maxc1; j >= minc1; j--)
+    {
+       
+        arr[i][j]=a[z] ;
+        z++;
+    }
+
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cout << arr[i][j]<<" ";
+        }cout<<endl;
+    }
+}
