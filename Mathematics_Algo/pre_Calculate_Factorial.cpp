@@ -1,5 +1,5 @@
-ll powMod(ll n,ll p,ll m){
-    ll res=1;
+long long powMod(long long n,long long p,long long m){
+    long long res=1;
     n%=m;
     while(p>0){
         if(p&1)
@@ -11,15 +11,15 @@ ll powMod(ll n,ll p,ll m){
 }
 
 
-const ll MAX = 1<<20;
-ll fact[MAX];
-ll ifact[MAX];
-void preCalcFac(ll m){
+const long long MAX = 1<<20;
+long long fact[MAX];
+long long ifact[MAX];
+void preCalcFac(long long m){
     fact[0] = 1;
-    for(ll i = 1; i < MAX; ++i)
+    for(long long i = 1; i < MAX; ++i)
         fact[i] = (fact[i - 1] * i) % m;
 
     ifact[MAX - 1] = powMod(fact[MAX - 1], m - 2, m);
-    for(ll i = MAX-2; i >= 0 ; --i)
+    for(long long i = MAX-2; i >= 0 ; --i)
         ifact[i] = (ifact[i + 1] * (i + 1)) % m;
 }

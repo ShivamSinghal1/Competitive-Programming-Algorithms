@@ -1,6 +1,6 @@
-ll totient(ll n){
-    ll result = n;
-    for (ll p = 2; p * p <= n; p++) { 
+long long totient(long long n){
+    long long result = n;
+    for (long long p = 2; p * p <= n; p++) { 
         if (n % p == 0) {  
             while (n % p == 0){
                 // Divide all the prime factor from n. E.g:- if n=12 and p=2, divide 12/2 = 6 again by 2 = 3.. 

@@ -1,4 +1,4 @@
-ll int sumOfGP(ll int r,ll int n,ll int m)
+long long sumOfGP(long long r,long long n,long long m)
 {
     // n = number of terms - 1
     // first term is assumed 1
@@ -10,7 +10,7 @@ ll int sumOfGP(ll int r,ll int n,ll int m)
         return 1;
     if(n==1)
         return (1+r)%m;
-    ll int ans;
+    long long ans;
     if(n%2)
         ans=1ll*(1+r)*sumOfGP((1ll*r*r)%m,(n-1)/2,m);
     else
