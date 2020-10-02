@@ -26,6 +26,7 @@ The purpose of this repository is to get all the Algorithms required for Competi
   13) totient :- Total numbers from 1 to N whose gcd with N is 1.
   14) fibonacciNumber(n) :- Returns the nth Fibonacci Number in constant time.
   15)Spiral Search in 2d array (C++ code)
+  16) Computes the last digit of fibonacci square series F0^2 + F1^2 + · · · + Fn^2 in constant time.
 
 ## String_Algo
   1) isVowel :- Check whether a character is vowel or not.
