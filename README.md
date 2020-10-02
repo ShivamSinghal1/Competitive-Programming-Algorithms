@@ -34,3 +34,8 @@ The purpose of this repository is to get all the Algorithms required for Competi
 1)Spiral search in 2d array
 
   
+## Trees_Algo
+1) LCA.cpp
+2) Topview.cpp
+3) Bottomview.cpp
+4) Common_tree_traversal.cpp
