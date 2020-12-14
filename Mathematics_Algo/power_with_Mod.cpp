@@ -1,4 +1,4 @@
-long long powm(long long n,long long p,long long m = i(mod)){
+long long powm(long long n,long long p,long long m = mod){
     long long res=1;
     n%=m;
     while(p){
