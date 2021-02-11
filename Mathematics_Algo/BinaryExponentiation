@@ -1,0 +1,31 @@
+//This ia a technnique to calculate (a^n) in O(logn) time complexity
+#include<bits/stdc++.h>
+using namespace std;
+int power(int base,int num)
+{
+   int result=1;
+   while(num>0)
+   {
+     if(num%2)
+     {
+       result=result*base;
+       num--;
+     }
+     else
+     {
+       base=base*base;
+       num=num/2;
+     }
+  }
+  return result;
+}
+int main()
+{
+  int b,n,r;
+  cout<<"Enter Base And Power:";
+  cin>>b>>n;
+  power(b,n);
+  r=power(b,n);
+  cout<<r;
+  return 0;
+}

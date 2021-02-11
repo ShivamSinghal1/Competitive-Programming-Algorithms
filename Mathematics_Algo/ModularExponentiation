@@ -1,0 +1,21 @@
+//It is a technique to calculate (a^n)%p where p is prime
+#include<bits/stc++.h>
+using namespace std;
+int modulararithmetic(int base,int power,int p)
+{
+  int result=1;
+  while(power)
+  {
+    if(power%2)
+    {
+      result=(result*base)%p;
+      power--;
+    }
+    else
+    {
+      base=(base*base)%p;
+      power=power/2;
+    }
+  }
+  return power;
+}
